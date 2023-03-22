@@ -1,0 +1,45 @@
+services:
+
+  bookstore-api:
+    build: 
+      context: .
+    container_name: bookstore-api
+    hostname: bookstore-api
+    volumes:
+      - ./:/app
+    networks:
+      - mainnet
+    ports:
+      - 8080:8080
+    deploy:
+      restart_policy:
+        condition: on-failure
+    restart: on-failure
+
+  db:
+    image: postgres:14-alpine
+    container_name: db
+    hostname: db
+    networks:
+      - mainnet
+    expose:
+      - 5432
+    command: -p 5432
+    volumes:
+      - vol:/var/lib/postgresql/data/pgdata
+    environment:
+      - POSTGRES_USER=bookstoreapi
+      - POSTGRES_PASSWORD=s3cretP@ssword
+      - POSTGRES_DB=bookstore
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    deploy:
+      restart_policy:
+        condition: on-failure
+    restart: on-failure
+
+volumes:
+  vol:
+
+networks:
+  mainnet:
+    driver: bridge
