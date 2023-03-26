@@ -1,0 +1,68 @@
+{
+    "taskDefinitionArn": "arn:aws:ecs:ap-southeast-1:308698115136:task-definition/cicd-demo:1",
+    "containerDefinitions": [
+        {
+            "name": "ci-cd-demo",
+            "image": "308698115136.dkr.ecr.ap-southeast-1.amazonaws.com/ci-cd-demo",
+            "cpu": 0,
+            "portMappings": [
+                {
+                    "name": "ci-cd-demo-80-tcp",
+                    "containerPort": 80,
+                    "hostPort": 80,
+                    "protocol": "tcp",
+                    "appProtocol": "http"
+                },
+                {
+                    "name": "ci-cd-demo-8080-tcp",
+                    "containerPort": 8080,
+                    "hostPort": 8080,
+                    "protocol": "tcp",
+                    "appProtocol": "http"
+                }
+            ],
+            "essential": true,
+            "environment": [],
+            "environmentFiles": [],
+            "mountPoints": [],
+            "volumesFrom": []
+        }
+    ],
+    "family": "cicd-demo",
+    "executionRoleArn": "arn:aws:iam::308698115136:role/ecsTaskExecutionRole",
+    "networkMode": "awsvpc",
+    "revision": 1,
+    "volumes": [],
+    "status": "ACTIVE",
+    "requiresAttributes": [
+        {
+            "name": "com.amazonaws.ecs.capability.ecr-auth"
+        },
+        {
+            "name": "ecs.capability.execution-role-ecr-pull"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.18"
+        },
+        {
+            "name": "ecs.capability.task-eni"
+        }
+    ],
+    "placementConstraints": [],
+    "compatibilities": [
+        "EC2",
+        "FARGATE"
+    ],
+    "requiresCompatibilities": [
+        "FARGATE"
+    ],
+    "cpu": "1024",
+    "memory": "3072",
+    "runtimePlatform": {
+        "cpuArchitecture": "X86_64",
+        "operatingSystemFamily": "LINUX"
+    },
+    "registeredAt": "2023-03-26T16:58:12.080Z",
+    "registeredBy": "arn:aws:iam::308698115136:root",
+    "tags": []
+}
