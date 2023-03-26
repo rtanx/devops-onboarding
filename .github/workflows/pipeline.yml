@@ -24,7 +24,9 @@ jobs:
       - name: Run unit test
         run: go test
       - name: List files
-        run: ls -R
+        run: ls -a
+      - name: check if task-definition exist
+        run: ls .aws/task-definition.json
 
   build-and-push:
     runs-on: ubuntu-latest
