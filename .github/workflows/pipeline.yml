@@ -23,10 +23,6 @@ jobs:
       - uses: actions/checkout@v3
       - name: Run unit test
         run: go test
-      - name: List files
-        run: ls -a
-      - name: check if task-definition exist
-        run: ls .aws/task-definition.json
 
   build-and-push:
     runs-on: ubuntu-latest
@@ -83,11 +79,14 @@ jobs:
     needs: build-and-push
     if: startsWith(github.ref, 'refs/tags')
     steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
       - name: Fill in the new image ID in the Amazon ECS task definition
         id: task-def
         uses: aws-actions/amazon-ecs-render-task-definition@v1
         with:
-          task-definition: task-definition.json
+          task-definition: $${{ env.ECS_TASK_DEFINITION }}
           container-name: ${{ env.CONTAINER_NAME  }}
           image: ${{ needs.build-and-push.outputs.image-name }}
 
