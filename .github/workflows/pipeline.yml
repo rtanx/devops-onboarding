@@ -12,7 +12,7 @@ env:
   ECR_REPOSITORY: 308698115136.dkr.ecr.ap-southeast-1.amazonaws.com/ci-cd-demo
   ECS_SERVICE: arn:aws:ecs:ap-southeast-1:308698115136:service/CICDDemo/cicd-demo-service
   ECS_CLUSTER: arn:aws:ecs:ap-southeast-1:308698115136:cluster/CICDDemo
-  ECS_TASK_DEFINITION: .aws/task-definition.json
+  ECS_TASK_DEFINITION: ./.aws/task-definition.json
   CONTAINER_NAME: ci-cd-demo
 
 jobs:
