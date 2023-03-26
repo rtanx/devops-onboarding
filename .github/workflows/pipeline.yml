@@ -38,7 +38,7 @@ jobs:
         id: version_step
         run: |
           echo "version=${GITHUB_REF#refs/tags/v}" >> $GITHUB_OUTPUT
-          echo "version_tag=${env.ECR_REPOSITORY}:${GITHUB_REF#refs/tags/v"}" >> $GITHUB_OUTPUT
+          echo "version_tag=${env.ECR_REPOSITORY}:${GITHUB_REF#refs/tags/v}" >> $GITHUB_OUTPUT
           echo "latest_tag=${env.ECR_REPOSITORY}:latest" >> $GITHUB_OUTPUT
 
       - name: Print version
